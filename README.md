@@ -2,7 +2,7 @@
 
 ## Summary
 
-In this code pattern, we will learn how to automatically generate a Jupyter notebook that will contain python code of a machine learning model using AutoAI. We will explore, modify and retrain this model pipeline using python code. Lastly, we will deploy this model in Watson Machine Learning using WML APIs.
+In this code pattern, we will learn how to automatically generate a Jupyter notebook that will contain Python code of a machine learning model using AutoAI. We will explore, modify and retrain this model pipeline using python code. Lastly, we will deploy this model in Watson Machine Learning using WML APIs.
 
 ## Description
 
