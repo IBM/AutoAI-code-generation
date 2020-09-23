@@ -2,7 +2,11 @@
 <!-- Add a new Title and fill in the blanks -->
 # Generate Python notebook for pipeline models using AutoAI
 
-In this code pattern, we will learn how to automatically generate and save a jupyter notebook model through AutoAI. We will also analyse, modify and retrain this auto generated model pipeline through the notebook generated.
+## Summary
+
+In this code pattern, we will learn how to automatically generate a jupyter notebook model through AutoAI. We will explore, modify and retrain this model pipeline using python code. Lastly, we will deploy this model in Watson Machine Learning using WML APIs.
+
+## Description
 
 AutoAI is a graphical tool available within Watson Studio that analyzes your dataset, generates several model pipelines  and ranks them based on the metric chosen for the problem. This code pattern shows extended features of AutoAI. More basic AutoAI exploration for the same dataset is covered in the [Generate machine learning model pipelines to choose the best model for your problem](https://developer.ibm.com/tutorials/generate-machine-learning-model-pipelines-to-choose-the-best-model-for-your-problem-autoai/) article.
 
@@ -154,13 +158,15 @@ Acquire the *target_space_id* as shown in the steps above and paste within the c
 
 ![create deployment](doc/source/images/create_deployment_autoai.png)
 
-Once the cells are executed, the model is promoted to the deployment space and is now available as a web service and can be verified from withint he UI as shown below.
+Once the cells are executed, the model is promoted to the deployment space and is now available as a web service and can be verified from within the UI as shown below.
+
 ![model deployed](doc/source/images/wml_model_deployed.png)
 
 ### Score webservice
 
-![score webservice](doc/source/images/score_webservice.png)
+Scoring the webservice can either be done from the UI by switching to the `test` tab shown in the screenshot above. Alternatively, the *score()* method from the WML API can be be used  to submit a sample test payload. The results are returned as shown in the screenshot below. 
 
+![score webservice](doc/source/images/score_webservice.png)
 
 # Related Links
 
