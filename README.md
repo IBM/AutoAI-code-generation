@@ -38,7 +38,7 @@ When you have completed this code pattern, you will understand how to:
 * [Python](https://www.python.org/) - Python is an interpreted, object-oriented, high-level programming language.
 * [Jupyter notebook](https://jupyter.org/) - Open-source web application to help build live code.
 * [scikit-learn](https://scikit-learn.org/stable/) - Python based machine learning library.
-* [lale](https://github.com/IBM/lale) - Python library compatible with scikit-learn for semi-autmated data science used in AutoAI SDK
+* [lale](https://github.com/IBM/lale) - Python library compatible with scikit-learn for semi-automated data science used in AutoAI SDK
 
 ## Prerequisites
 
