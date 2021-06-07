@@ -66,6 +66,8 @@ You will see a notification that indicates *AutoAI experiment has started*. Depe
 
 ### 2. Generate experiment level notebook
 
+![Experiment Notebook](doc/source/images/experiment_notebook.png)
+
 The `experiment notebook` provides annotated code so you can:
 
 * Interact with trained model pipelines
@@ -162,6 +164,8 @@ Scoring the web service can either be done from the UI by switching to the `test
 ![score web service](doc/source/images/score_webservice.png)
 
 ### 3. Generate pipeline level notebook
+
+![Pipeline Notebook](doc/source/images/pipeline_notebook.png)
 
 The `pipeline notebook` provides annotated code that allow you to:
 
