@@ -64,29 +64,39 @@ When you have completed this code pattern, you will understand how to:
 
 You will see a notification that indicates *AutoAI experiment has started*. Depending on the size of the data set, this step will take a few minutes to complete.
 
-### 2. Saving AutoAI generated notebook
+### 2. Generate experiment level notebook
 
-Once the experiment has completed, the leaderboard has a ranked list of the pipelines that AutoAI has generated.
+The `experiment notebook` provides annotated code so you can:
 
-![Export AutoAI Notebook](doc/source/images/ExportAutoAI.gif)
+* Interact with trained model pipelines
+* Access model details programmatically (including feature importance and machine learning metrics)
+* Visualize each pipeline as a graph, with each node documented, to provide transparency
+* Download selected pipelines and test locally
+* Create a deployment and score the model
+* Get the experiment configuration, which you can use for automation or integration with other applications
 
-1. Hover over the pipeline that you wish to save as notebook and click on the `Save as` dropdown on the right side and select `Notebook` from the drop down.
+To generate an experiment notebook, perform the following steps :
 
-1. In the `Save as notebook` prompt, you will notice that there are two types of notebooks that can be generated, namely *WML notebook* and *AutoAI_lib notebook*.  We will select the default `WML notebook` which as we will see will include content from the other notebook as well.  
+![Export AutoAI Notebook](doc/source/images/save-experiment-notebook.gif)
 
-1. Modify the default *Name* if needed and click `Save`. A pop up will show up that indicates that the notebook was saved successfully. You will now see this notebook under the *Notebooks* section within the the *Assets* tab.
+1. Once the AutoAI experiment completes, click on the `Save experiment code` button indicated by the floppy icon.
 
-### 3. Load and execute notebook
+    ![Save experiment button](doc/source/images/save-experiment-button.png)
 
-Spend some time looking through the sections of the notebook to get an overview. A notebook is composed of text (markdown or heading) cells and code cells. The markdown cells provide comments on what the code is designed to do.
+1. In the `Save experiment code` prompt, modify the default *Name* if needed and click `Save`. A pop up will show up that indicates that the notebook was saved successfully. You will now see this notebook under the *Notebooks* section within the the *Assets* tab.
 
-You will run cells individually by highlighting each cell, then either click the `Run` button at the top of the notebook or hitting the keyboard short cut to run the cell (Shift + Enter but can vary based on platform). While the cell is running, an asterisk ([*]) will show up to the left of the cell. When that cell has finished executing a sequential number will show up (i.e. [17]).
+#### 2.0 Load and execute notebook  
+
+Spend some time looking through the sections of the notebook to get an overview.
+ A notebook is composed of text (markdown or heading) cells and code cells. The markdown cells provide comments on what the code is designed to do.
+
+You will run cells individually by highlighting each cell, then either click the `Run` button at the top of the notebook or hitting the keyboard short cut to run the cell (Shift + Enter but can vary based on platform). While the cell is running, an asterisk ([*]) will show up to the left of the cell. When that cell has finished executing a sequential number will show up (i.e. [17]). * 
 
 ![Execute AutoAI Notebook](doc/source/images/ExecuteAutoAINotebook.gif)
 
 The notebook generated is pre filled with Python code and is divided into 4 main sections as follows.
 
-#### 3.1 Setup
+#### 2.1 Setup
 
 This section contains credentials to *Cloud Object Storage* through which the current AutoAI pipeline is retrieved. The cell contains code prefilled to extract the training data used to create the pipeline and the pipeline results.
 
@@ -96,51 +106,37 @@ Also this section contains the metadata of the current pipeline that were used t
 
 ![input parameters](doc/source/images/input_parameters.png)
 
-#### 3.2 Pipeline inspection
-
-Within this section of the notebook, there is code that extracts the current model and prints it as Python code.
-
-![pretty print -1](doc/source/images/pretty_print-1.png)
-
-This section also contains code to visualize the stages within the model as graph using Watson Machine Learning's AutoAI APIs.
-
-![visualize -1](doc/source/images/visualize-1.png)
-
-#### 3.3 Pipeline refinery and testing
-
-This optional section walks us through two different ways of editing and retraining the model generated from the chosen pipeline.
-
->**Convert Raw NBConvert cells to Code Cells** -
-Since this section of the notebook is optional, these cells cannot be run by default. To execute these series of cells, highlight the cell, and click on the `Format` dropdown from the menu and change the selection from `Raw NBConvert` cell to `Code`.
-![format as code](doc/source/images/format-as-code.png)
-
-##### Option 1 - Modify source code
-
-By running the `pretty-print` function, a  code cell is inserted as shown below. This new cell contains the source code of the pipeline. This code can now be modified and re-trained to produce a new model.
-
-![modify source code](doc/source/images/modify-source-code.png)
-
-##### Option 2 -  Use lale library for semiautomated data science
-
-By using the *hyperopt* optimizer provided by the *lale* framework, we see how an estimator modified as a graph can be trained and tested.
-
-![visualize -2](doc/source/images/visualize-2.png)
-
-Since the framework is compatible with scikit-learn the output pipeline can be exported as a scikit-learn model using the `export_to_sklearn_pipeline` method.
-
-![export sklearn](doc/source/images/export-sklearn.png)
-
-### 4. Deploy and score as web service using WML instance
-
-This section of the notebook contains code that deploys the pipeline model as a web service using Watson Machine Learning. This section requires users to enter credentials to be able to identify the right WML instance and deployment space. The two credentials are `api_key` and `target_space_id`
-
-#### api_key
+##### api_key
 
 To be able to access the WML instance, the user will need to generate an *api key* through the cloud account and paste it in the cell as shown in the cell below. The instructions to acquire the *cloud api key* is described in the markdown section of the screenshot shown below.
 
 ![wml connection](doc/source/images/wml_connection_autoai.png)
 
-#### target_space_id
+#### 2.2 Pipelines comparison
+
+To compare all the pipelines that gets generated, call the `summary()` method on the pipeline object. The best performing model is stored under the `best_pipeline_name` variable
+
+![pipelines comparison](doc/source/images/pipelines-comparison.png)
+
+By passing the variable name within the `get_pipeline()` method, all the feature importance generated with that particular pipeline is listed.
+
+![feature importance](doc/source/images/feature-importance.png)
+
+#### 2.3 Inspect pipeline
+
+Within this section of the notebook, there is code to visualize the stages within the model as graph using Watson Machine Learning's AutoAI APIs.
+
+![visualize -1](doc/source/images/visualize-1.png)
+
+This section also contains code that extracts the current model and prints it as Python code.
+
+![pretty print -1](doc/source/images/pretty_print-1.png)
+
+#### 2.4 Deploy and score as web service using WML instance
+
+This section of the notebook contains code that deploys the pipeline model as a web service using Watson Machine Learning. This section requires users to enter credentials to be able to identify the right WML instance and deployment space.
+
+##### target_space_id
 
 >*To create a deployment space and get the target_space_id*:
 ![wml deployment space](doc/source/images/wml-deployment-space.gif)
@@ -164,6 +160,29 @@ Once the cells are executed, the model is promoted to the deployment space and i
 Scoring the web service can either be done from the UI by switching to the `test` tab shown in the screenshot above. Alternatively, the *score()* method from the WML API can be be used to submit a sample test payload. The results are returned as shown in the screenshot below.
 
 ![score web service](doc/source/images/score_webservice.png)
+
+### 3. Generate pipeline level notebook
+
+The `pipeline notebook` provides annotated code that allow you to:
+
+* View the Scikit-learn pipeline definition
+* See the transformations applied for pipeline training
+* Preview hyper-parameters values found in HPO phase
+* Review the pipeline evaluation
+* Refine the pipeline definition
+* Re-fit and re-evaluate
+
+To generate a pipeline notebook, perform the following steps :
+
+![Export AutoAI Notebook](doc/source/images/ExportAutoAI.gif)
+
+1. Hover over the pipeline that you wish to save as notebook and click on the `Save as` dropdown on the right side and select `Notebook` from the drop down.
+
+1. In the `Save as` prompt, you will notice that there are two types of assets that can be generated, namely *Model* and *Notebook*.  We will select the `Notebook` option.  
+
+1. From the `Define details` section on the right, change the default *Name* if needed and click `Create`. A pop up will show up that indicates that the notebook was saved successfully. You will now see this notebook under the *Notebooks* section within the the *Assets* tab.
+
+Edit and execute each of the cells as shown in section `2.0`. The note contains more information in its markdown cells.
 
 ## Related Links
 
